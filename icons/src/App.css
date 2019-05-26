@@ -1,0 +1,15 @@
+.App {
+  margin-top: 15px;
+}
+
+.App .navbar-brand {
+  font-weight: bold;
+}
+ul li {
+    display:inline-block;
+}
+.divider{
+    width:25px;
+    height:auto;
+    display:inline-block;
+}
