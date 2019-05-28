@@ -45,19 +45,19 @@ class App extends Component {
             <Navbar.Toggle />
           </Navbar.Header>
         </Navbar>
-        <div>
-        <ul>
+       <ul >
+          <div className = "divider">
           <li> <FacebookShareButton url = {link} >
-          <FacebookIcon size = {34} round = {true} />
-                </FacebookShareButton> </li>
-          <div />
+            <FacebookIcon size = {30} round = {true} />
+              </FacebookShareButton> </li>
+         </div>
+         <div className = "divider">
           <li> <WhatsappShareButton url = {link} >
-          <WhatsappIcon size = {34} round = {true} />
-                </WhatsappShareButton> </li>
-
+          <WhatsappIcon size = {30} round = {true} />
+              </WhatsappShareButton> </li>
+          </div>
         </ul>
-        </div>
-	      <Routes/>
+	<Routes/>
 
 
       </div>
