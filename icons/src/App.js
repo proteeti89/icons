@@ -39,8 +39,6 @@ class App extends Component {
           <Navbar.Header>
             <Navbar.Brand>
             <Link to="/">Icons</Link>
-              <div >
-              </div>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
