@@ -7,9 +7,11 @@
 }
 ul li {
     display:inline-block;
+    float: left;
 }
 .divider{
-    width:25px;
+    width:35px;
     height:auto;
     display:inline-block;
+    float: left;
 }
