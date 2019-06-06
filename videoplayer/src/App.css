@@ -1,0 +1,69 @@
+$column-width: 480px;
+$gutter-width: 20px;
+
+.App {
+  text-align: center;
+  margin: auto;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+.player-wrapper {
+  width: auto;
+  height: auto;
+
+}
+
+ul li {
+    list-style-type: none;
+    display: inline-block;
+    width: auto;
+}
+
+ul{
+  width: 100%;
+  justify-content: space-between;
+  align-items: stretch;
+
+}
+
+
+.react-player {
+  padding-top: 56.25%;
+  position: relative;
+}
+.react-player > div {
+  position: absolute;
+}
+.section {
+  display: inline-block;
+  max-width: $column-width;
+  margin: $gutter-width;
+  text-align: left;
+  vertical-align: top;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
