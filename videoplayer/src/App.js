@@ -7,8 +7,6 @@ import screenfull from 'screenfull';
 import CardMedia from '@material-ui/core/CardMedia';
 import { DropdownMenu, MenuItem } from 'react-bootstrap-dropdown-menu';
 
-import  {Button, Dropdown, DropdownButton, ButtonToolbar, ButtonGroup } from 'react-bootstrap';
-import ResponsiveMenu from 'react-responsive-navbar';
 
 
 class App extends Component {
