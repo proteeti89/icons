@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
-import ReactPlayer from 'react-player'
-import { findDOMNode } from 'react-dom'
+import ReactPlayer from 'react-player';
+import { findDOMNode } from 'react-dom';
 import './App.css';
 
-import screenfull from 'screenfull'
+import screenfull from 'screenfull';
 import CardMedia from '@material-ui/core/CardMedia';
+import { DropdownMenu, MenuItem } from 'react-bootstrap-dropdown-menu';
+
+import  {Button, Dropdown, DropdownButton, ButtonToolbar, ButtonGroup } from 'react-bootstrap';
+import ResponsiveMenu from 'react-responsive-navbar';
+
 
 class App extends Component {
 
-
   state = {
-    currentUrl: "../../Proteeti/Desktop/IMG_4521.mp4",
+    currentUrl: "IMG_4521.mp4",
     pip: false,
     playing: true,
     isHindi: false,
     muted: false,
-    light: false,
+    light: true,
+    defaultLang: "English",
     urlEnglish: "https://vimeo.com/90509568",
     /*url: "file:///Proteeti/Desktop/IMG_4521.mp4",*/
     urlHindi: "https://www.dailymotion.com/video/x5e9eog",
     urlBengali: "https://www.youtube.com/watch?v=Dr6b_6i-fY4",
     urlsByResolution: ["https://www.dailymotion.com/video/x5e9eog", "https://vimeo.com/90509568",
     "https://www.youtube.com/watch?v=Dr6b_6i-fY4","https://www.youtube.com/watch?v=_DL0aOgOwwg"],
-    volume: 0.8,
+    volume: 0.7,
     played: 0,
     loaded: 0,
     loop: false,
-    playbackRate: 1.0
+    playbackRate: 1.0,
+    isHidden: false,
   }
 
 
@@ -86,9 +92,27 @@ class App extends Component {
     })
   }
 
-  changePlaybackRate = e => {
+  changePlaybackRate75 = () => {
     this.setState({
-      playbackRate: parseFloat(e.target.value)
+      playbackRate: 0.75
+    })
+  }
+
+  changePlaybackRate1 = () => {
+    this.setState({
+      playbackRate: 1.0
+    })
+  }
+
+  changePlaybackRate15 = () => {
+    this.setState({
+      playbackRate: 1.5
+    })
+  }
+
+  changePlaybackRate2 = () => {
+    this.setState({
+      playbackRate: 2.0
     })
   }
 
@@ -130,19 +154,22 @@ class App extends Component {
  /* language changers */
   changeToHindi = () => {
     this.setState({
-      currentUrl: this.state.urlHindi
+      currentUrl: this.state.urlHindi,
+      defaultLang: "Hindi"
     })
   }
 
   changeToEnglish = () => {
     this.setState({
-      currentUrl: this.state.urlEnglish
+      currentUrl: this.state.urlEnglish,
+      defaultLang: "English"
     })
   }
 
   changeToBengali = () => {
     this.setState({
-      currentUrl: this.state.urlBengali
+      currentUrl: this.state.urlBengali,
+      defaultLang: "Bengali"
     })
   }
 
@@ -159,6 +186,13 @@ class App extends Component {
       currentUrl: "https://www.youtube.com/watch?v=dHTXLA92hu4"
     })
   }
+
+  toggleHidden = () => {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+
 
   render() {
 
@@ -182,13 +216,14 @@ class App extends Component {
   return (
     <div className = "app">
       <h1> Video Player </h1>
-      <div className = "player-wrapper">
+      {/*<div className = "player-wrapper"> */}
       <CardMedia className = "embed-responsive embed-responsive-16by9">
         <ReactPlayer
+          className = "video-player"
           url = {currentUrl}
           ref = {this.ref}
           playing = {playing}
-          config={{ file: {
+          config = {{ file: {
         tracks: [
       {kind: 'subtitles', label: "English", src: 'subs/subtitles.en.vtt', srcLang: 'en'},
       {kind: 'subtitles', label: "Hindi", src: 'subs/subtitles.hi.vtt', srcLang: 'hi', default: true},
@@ -197,7 +232,7 @@ class App extends Component {
   }}
           controls = {true}
           loop = {loop}
-          light = {light}
+          light = {true}
           playbackRate = {playbackRate}
           volume = {volume}
           muted = {muted}
@@ -210,7 +245,27 @@ class App extends Component {
           onError = {e => console.log("onError", e)}
           />
       </CardMedia>
-      </div>
+
+      {/*light = "thumbnail.png" */}
+      <DropdownMenu triggerType='text' trigger='Languages'>
+        <MenuItem text="English"  onClick = {this.changeToEnglish}/>
+        <MenuItem text="Hindi"  onClick = {this.changeToHindi}/>
+        <MenuItem text="Bengali"  onClick = {this.changeToBengali}/>
+      </DropdownMenu>
+      <DropdownMenu triggerType = 'text' trigger = 'Resolution'>
+        <MenuItem text = "Low Res" onClick = {this.changeResolution} />
+        <MenuItem text = "Medium Res" onClick = {this.changeToMedium} />
+        <MenuItem text = "High Res" onClick = {this.changeToHigh} />
+      </DropdownMenu>
+      <DropdownMenu triggerType = 'text' trigger = 'Playback Rate'>
+        <MenuItem text = "0.75x" onClick = {this.changePlaybackRate75} />
+        <MenuItem text = "1x" onClick = {this.changePlaybackRate1} />
+        <MenuItem text = "1.5x" onClick = {this.changePlaybackRate15} />
+        <MenuItem text = "2x" onClick = {this.changePlaybackRate2} />
+      </DropdownMenu>
+
+
+      {/*
       <ul>
         <li>
         <ul> Controls
@@ -279,6 +334,7 @@ class App extends Component {
 
         </li>
       </ul>
+      */}
     </div>
   );
  }
