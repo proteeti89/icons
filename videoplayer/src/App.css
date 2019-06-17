@@ -13,6 +13,14 @@ $gutter-width: 20px;
   height: auto;
 
 }
+.player-wrapper .react-player__play-icon {
+  border-width: 32px 0px 32px 50px;
+}
+
+.player-wrapper .react-player__preview {
+  width: 100% !important;
+  height: auto;
+}
 
 ul li {
     list-style-type: none;
